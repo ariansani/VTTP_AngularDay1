@@ -1,0 +1,5 @@
+<div (mouseenter)="enter()" (mouseleave)="exit()"><img class="thumbnail" [src]="image" alt="">
+<p [style.font-size]="fontSize">{{caption}}</p>
+<button type="button" [disabled]="addToCart" (click)="imageClicked()">Add to Cart</button>
+</div>
+
