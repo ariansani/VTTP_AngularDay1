@@ -6,15 +6,24 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./numbers.component.css'],
 })
 export class NumbersComponent implements OnInit {
+  
+  image!:string
+  generatedNum=0
+  listOfGeneratedNum!: string[]
+  mySet!:Set<string>
+  htmlGeneratedNum!:string
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    
+  this.image = '/assets/numbers/number0.jpg';
+  this.generatedNum = 0;
+  this.listOfGeneratedNum = [];
+  this.mySet = new Set<string>();
+  this.htmlGeneratedNum = '';
+  }
 
-  image = '/assets/numbers/number0.jpg';
-  generatedNum = 0;
-  listOfGeneratedNum: string[] = [];
-  mySet = new Set<string>();
-  htmlGeneratedNum = '';
 
   getRandomNumber() {
     let max = 30;
@@ -69,6 +78,13 @@ export class NumbersComponent implements OnInit {
       const box = document.getElementById('box');
 
       box?.appendChild(el);
+
+      el.addEventListener('click', ((event: CustomEvent) => {
+        this.mySet.delete(this.generatedNum.toString());
+
+       let element = el;
+       el.remove();
+       }) as EventListener);
     
   }
 
@@ -90,6 +106,13 @@ export class NumbersComponent implements OnInit {
       const box = document.getElementById('box');
 
       box?.appendChild(el);
+
+      el.addEventListener('click', ((event: CustomEvent) => {
+        this.mySet.delete(this.generatedNum.toString());
+
+       let element = el;
+       el.remove();
+       }) as EventListener);
 
   }
 }
